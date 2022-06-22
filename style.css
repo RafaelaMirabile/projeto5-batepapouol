@@ -102,12 +102,27 @@ footer button{
     opacity: 0;
 }
 .containerChat{
-    background-color: yellowgreen;
-    right: 0;
-    bottom: 47px;
+    background-color: #E5E5E5;
+    top: 86px;
+    bottom: 85px;
     width: 100%;
     position: fixed;
-    height: 460px;
-
+    height: 462px;
+}
+.message{
+    width: 100%;
+    min-height: 40px;
+    font: Roboto;
+    margin-bottom: 5px;
+}
+.message.status{
+    background-color: 
+    #DCDCDC; 
+}
+.message.all{
+    background-color:  #FFFFFF;
+}
+.message.private{
+    background-color: #FFDEDE;
 }
 
