@@ -7,21 +7,35 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <title>Bate Papo UOL</title>
 </head>
 <body>
-    <div class="containerLogin">
+    <header class="none">
+        <img src="images/logo 2.png" alt="logo bate Papo UOL">
+        <ion-icon name="people"></ion-icon>
+    </header>
+    <div class="containerLogin ">
         <div class="loginPage">
             <img src="images/logo 2.png" alt="logo bate papo UOL">
             <div>
-                <input type="text" placeholder=" Digite nome do usuario">
-                <button>Entrar</button>
+                <input class="user" type="text" placeholder=" Digite nome do usuario">
+                <button onclick="enterChat()">Entrar</button>
             </div>
         </div>
-
-
+    </div>
+    <div class="containerChat none"></div>
+        <footer class="none">
+            <div>
+                <button></button>
+            </div>
+            <input class="message" type="text" placeholder="Escreva aqui...">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+        </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="scripts.js"></script>
+	<script src="script.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>

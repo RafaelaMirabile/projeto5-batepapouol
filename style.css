@@ -19,7 +19,7 @@
     align-items: center;
     width: 100%;
 }
-.loginPage input{
+.user{
     min-height: 14px;
     width: 80%;
     font-family: 'Roboto';
@@ -32,7 +32,7 @@
     background: #FFFFFF;
     border: 1px solid #D7D7D7;
     border-radius: 4px;
-    margin: 20px 0 10px 0;
+    margin: 60px 0 20px 0;
 }
 .loginPage button{ 
     width: 90px;
@@ -47,3 +47,67 @@
     line-height: 25px;
     color: #696969;
 }
+.none{
+    display: none;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.09);
+}
+header img , header ion-icon {
+    width: 75px;
+    height: 53px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.09);
+}
+footer ion-icon{
+    width: 26px;
+    height: 26px;
+}
+.message{
+    min-height: 14px;
+    width: 70%;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    border: none;
+}
+footer button{
+    position: absolute;
+    right: 7px;
+    bottom: 0px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    opacity: 0;
+}
+.containerChat{
+    background-color: yellowgreen;
+    right: 0;
+    bottom: 47px;
+    width: 100%;
+    position: fixed;
+    height: 460px;
+
+}
+
