@@ -74,7 +74,7 @@ footer{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 7px;
     background: #FFFFFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.09);
 }
@@ -82,9 +82,9 @@ footer ion-icon{
     width: 26px;
     height: 26px;
 }
-.message{
+.messageInput{
     min-height: 14px;
-    width: 70%;
+    width: 90%;
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 400;
@@ -103,17 +103,18 @@ footer button{
 }
 .containerChat{
     background-color: #E5E5E5;
-    top: 86px;
-    bottom: 85px;
     width: 100%;
-    position: fixed;
-    height: 462px;
+    padding-top: 90px;
 }
 .message{
     width: 100%;
     min-height: 40px;
-    font: Roboto;
-    margin-bottom: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    padding-left:6px;
 }
 .message.status{
     background-color: 
@@ -124,5 +125,19 @@ footer button{
 }
 .message.private{
     background-color: #FFDEDE;
+}
+.time{
+    color: #AAAAAA;
+    margin-right: 6px;
+}
+strong{
+    font-weight: 700;
+    margin-right:6px;
+}
+span{
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
