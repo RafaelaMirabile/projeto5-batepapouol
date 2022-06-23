@@ -84,7 +84,7 @@ footer ion-icon{
 }
 .messageInput{
     min-height: 14px;
-    width: 90%;
+    width: 70%;
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 400;
@@ -94,12 +94,12 @@ footer ion-icon{
 }
 footer button{
     position: absolute;
-    right: 7px;
+    right: 0px;
     bottom: 0px;
     width: 45px;
-    height: 45px;
+    height: 35px;
     border: none;
-    opacity: 0;
+    background: #FFFFFF;
 }
 .containerChat{
     background-color: #E5E5E5;
@@ -135,9 +135,7 @@ strong{
     margin-right:6px;
 }
 span{
-
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
 }
-
