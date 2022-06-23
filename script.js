@@ -14,7 +14,7 @@ function enterChat(){
     chat.classList.remove("none");
     head.classList.remove("none");
     sendMessage();
-    setInterval(getMessages ,3000 );
+    //setInterval(getMessages ,3000 );
     
 }
 
@@ -59,6 +59,7 @@ function messagesOnChat(){
         }
 
     }
+    scroll();
 }
 // mandando o nome para entrar e sair //
 function sendMessage(){
@@ -69,4 +70,10 @@ function sendMessage(){
       }
     let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants" , object );
     promise.then(getMessages);
+}
+// FAZER FUNCIONAR
+function scroll(){
+    const ultima = document.querySelector(".containerChat").lastElementChild;
+    console.log(ultima);
+    ultima.scrollIntoView();
 }
