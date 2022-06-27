@@ -24,34 +24,43 @@
             <div>
                 <div class="campoErro"></div>
                 <input class="user" type="text" placeholder=" Digite nome do usuario">
-                <button onclick="enterChat()">Entrar</button>
+                <button onclick="sendUserName()">Entrar</button>
+                <div class="spinner"></div>
             </div>
         </div>
     </div>
     <div class="overlay none">
-        <div class="opacityLayer "></div>
-        <div class="messageLayer">
+        <div class="opacityLayer" onclick="returnToChat()"></div>
+        <div class="messageLayer" >
             <h3>Escolha um contato para enviar mensagem:</h3>
-            <div class="usersL">
-                <div>
-                    <ion-icon name="people"></ion-icon>
-                    <span>Todos</span>
+            <div class="usersLayer">
+                <div class="usersList selected" onclick= greenCheckMessageTo(check)>
+                    <div>
+                        <ion-icon name="people"></ion-icon>
+                        <span class="contact">Todos</span>
+                    </div>
+                    <ion-icon class="check" name="checkmark-outline"></ion-icon>
                 </div>
             </div>
             <div class="messageType">
                 <h3>Escolha a visibilidade:</h3>
                 <div class="chooseVisiability ">
-                    <div>
-                        <ion-icon name="lock-closed"></ion-icon>
-                        <span>Todos</span>
+                    <div class = "visibility selected2"  onclick="chooseVisibility(this)">
+                        <div>
+                            <ion-icon name="lock-closed"></ion-icon>
+                            <span class="visi">Todos</span>
+                        </div>
+                        <ion-icon class="check2" name="checkmark-outline"></ion-icon>
                     </div>
-                    <div>
-                        <ion-icon name="lock-closed"></ion-icon>
-                        <span>Reservadamente</span>
+                    <div class = "visibility" onclick="chooseVisibility(this)">
+                        <div>
+                            <ion-icon  name="lock-closed"></ion-icon>
+                            <span class="visi">Reservadamente</span>
+                        </div>
+                        <ion-icon class="check2" name="checkmark-outline"></ion-icon>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="containerChat none"></div>
@@ -63,9 +72,8 @@
                 </button>
 
         </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="script.js"></script>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-</body>
-</html>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	    <script src="script.js"></script>
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    </body>
+    </html>
