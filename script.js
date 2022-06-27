@@ -7,23 +7,23 @@ let users = [];
 let participantsList =[];
 let contact;
 let option;
+let foot;
 
 
 function sendUserName(){
     let userName = document.querySelector(".user").value;
-    console.log(userName);
     let object = {
         name:userName
       }
-    let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants" , object );
+    let promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants" , object );
     promise.then(getMessages);
     promise.catch(changeUserName);
 }
 // funcao para pegar as mensagens da API//
 function getMessages(){
-    console.log("funcao pegando mensagens a cada 3s");
+
     const gif = document.querySelector(".spinner")
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
     
     gif.innerHTML+='<img src="images/spinner.gif" alt=""><div>Entrando...</div>';
     
@@ -73,7 +73,8 @@ function messagesOnChat(){
                                     <span> ${messages[i].text} </span>
                                 </div>`;
             }
-            else if(messages[i].type === "private_message" && messages[i].to === userName){
+            else if(messages[i].type === "private_message" && messages[i].to === userName ||
+            messages[i].type === "private_message" && messages[i].from === userName ){
                     chat.innerHTML+=`<div class = "message private"> 
                                         <span class = "time">(${messages[i].time})</span>
                                         <strong> ${messages[i].from}</strong><span>reservadamente para<span><strong>${messages[i].to}:</strong>
@@ -92,15 +93,15 @@ function scroll(){
 }
 
 function sendUserMessage(){
+    console.log("clicou");
     let messageObject ={};
     let contact = document.querySelector(".selected .contact").innerHTML;
     let option = document.querySelector(".selected2 .visi").innerHTML;
     let userName = document.querySelector(".user").value;
     let userMessage = document.querySelector(".messageInput").value;
-    console.log(contact);
-    console.log(option);
 
     if(contact !== undefined && option === "Reservadamente"){
+
         messageObject ={
             from: userName,
             to: contact,
@@ -116,7 +117,7 @@ function sendUserMessage(){
         }
 
     }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messageObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", messageObject);
     promise.then(getMessages);
     promise.catch(reload);
 }
@@ -126,7 +127,7 @@ function postStatus(){
     uNObject = {
         name: uN
       }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", uNObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/status", uNObject);
     promise.then(console.log("UserOnChat"));
     promise.catch(()=> console.log("saiu do chat"));
 
@@ -152,14 +153,13 @@ window.location.reload();
 
 // BONUS//
 function getParticipants(){
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
     promise.then(participants);
     promise.catch(()=> console.log("requisicao de participantes falhou"));
 
 }
 
 function participants(response){
-    console.log("atualizando lista de usuario a cada 10");
     let users = response.data;
 
     participantsList = document.querySelector(".usersLayer");
@@ -176,11 +176,13 @@ function participants(response){
 
 function greenCheckMessageTo(check){
     let userSelected = document.querySelector(".selected");
-
+    
     if(userSelected !== null){
         userSelected.classList.remove("selected");
     }
     check.classList.add("selected");
+
+    addFooter();   
 }
 
 function chooseVisibility(check2){
@@ -190,6 +192,19 @@ function chooseVisibility(check2){
         visibility.classList.remove("selected2");
     }
     check2.classList.add("selected2");
+    addFooter();
+}
+function addFooter(){
+    
+    let fadd = document.querySelector(".add");
+    let option = document.querySelector(".selected2 .visi").innerHTML;
+    let contact = document.querySelector(".selected .contact").innerHTML;
+    
+    if(contact !== undefined && option === "Reservadamente"){
+        fadd.innerHTML =`<div>Enviando para ${contact} (reservadamente)</div>`;
+    } else if (contact === "Todos" && option === "Público"){
+        fadd.classList.add("none");
+    }
 }
 
 function returnToChat(){
@@ -197,7 +212,6 @@ function returnToChat(){
     const back = document.querySelector(".overlay");
     back.classList.remove("flex");
     back.classList.add("none");
-    console.log(userName);
     getMessages();
 }
 

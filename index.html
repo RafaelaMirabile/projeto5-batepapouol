@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons8-chat-50.png" />
 
     <title>Bate Papo UOL</title>
 </head>
@@ -34,7 +35,7 @@
         <div class="messageLayer" >
             <h3>Escolha um contato para enviar mensagem:</h3>
             <div class="usersLayer">
-                <div class="usersList selected" onclick= greenCheckMessageTo(check)>
+                <div class="usersList selected" onclick= greenCheckMessageTo(this)>
                     <div>
                         <ion-icon name="people"></ion-icon>
                         <span class="contact">Todos</span>
@@ -48,7 +49,7 @@
                     <div class = "visibility selected2"  onclick="chooseVisibility(this)">
                         <div>
                             <ion-icon name="lock-closed"></ion-icon>
-                            <span class="visi">Todos</span>
+                            <span class="visi">Público</span>
                         </div>
                         <ion-icon class="check2" name="checkmark-outline"></ion-icon>
                     </div>
@@ -66,14 +67,15 @@
     <div class="containerChat none"></div>
         <footer class="none">
             <input class="messageInput" type="text" placeholder="Escreva aqui...">
-
+            <div>
                 <button onclick="sendUserMessage()">                
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </button>
-
+            </div>
+            <div class="add"></div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	    <script src="script.js"></script>
-        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    </body>
-    </html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
