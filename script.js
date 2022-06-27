@@ -14,17 +14,15 @@ function sendUserName(){
     let object = {
         name:userName
       }
-    let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants" , object);
+    let promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants" , object);
     promise.then(getMessages);
     promise.catch(changeUserName);
 }
 
 function getMessages(){
-    console.log("pegando mendagem");
-    
     let er = document.querySelector(".erro");
     const gif = document.querySelector(".spinner");
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
     
     er.classList.remove("flex")
     er.classList.add("none");
@@ -42,6 +40,7 @@ function getData(response){
     }
 
 function messagesOnChat(){
+    let userName2 = document.querySelector(".user").value;
 
     let login = document.querySelector(".containerLogin");
     let foot = document.querySelector("footer");
@@ -72,8 +71,7 @@ function messagesOnChat(){
                                     <span> ${messages[i].text} </span>
                                 </div>`;
             }
-            else if(messages[i].type === "private_message" && messages[i].to === userName ||
-            messages[i].type === "private_message" && messages[i].from === userName ){
+            else if(messages[i].type === "private_message" && (messages[i].to === userName2  || messages[i].from === userName2 )){
                     chat.innerHTML+=`<div class = "message private"> 
                                         <span class = "time">(${messages[i].time})</span>
                                         <strong> ${messages[i].from}</strong><span>reservadamente para<span><strong>${messages[i].to}:</strong>
@@ -92,7 +90,6 @@ function scroll(){
 }
 
 function sendUserMessage(){
-    console.log("clicou");
 
     let messageObject ={};
     let contact = document.querySelector(".selected .contact").innerHTML;
@@ -116,7 +113,7 @@ function sendUserMessage(){
         }
 
     }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messageObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", messageObject);
     promise.then(getMessages);
     promise.catch(reload);
 }
@@ -126,13 +123,12 @@ function postStatus(){
     uNObject = {
         name: uN
       }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", uNObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/status", uNObject);
     promise.then(console.log("UserOnChat"));
     promise.catch(()=> console.log("saiu do chat"));
 }
 
 function changeUserName(error){
-    console.log("nao mandou o nome ");
     let campo = document.querySelector(".campoErro");
     if(error.response.status === 400 || userName == " "){
         campo.innerHTML = '<span class = "changeName" >Nome de usuário já existente.Por favor escolha outro.</span>'
@@ -150,7 +146,7 @@ window.location.reload();
 }
 
 function getParticipants(){
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
     promise.then(participants);
     promise.catch(()=> console.log("requisicao de participantes falhou"));
 
