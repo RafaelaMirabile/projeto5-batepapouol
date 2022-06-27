@@ -22,12 +22,12 @@
     <div class="containerLogin ">
         <div class="loginPage">
             <img src="images/logo 2.png" alt="logo bate papo UOL">
-            <div>
+            <div class="erro">
                 <div class="campoErro"></div>
                 <input class="user" type="text" placeholder=" Digite nome do usuario">
                 <button onclick="sendUserName()">Entrar</button>
-                <div class="spinner"></div>
             </div>
+            <div class="spinner"></div>
         </div>
     </div>
     <div class="overlay none">
@@ -68,7 +68,7 @@
         <footer class="none">
             <input class="messageInput" type="text" placeholder="Escreva aqui...">
             <div>
-                <button onclick="sendUserMessage()">                
+                <button class="send" onclick="sendUserMessage()">                
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </button>
             </div>

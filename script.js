@@ -9,38 +9,38 @@ let contact;
 let option;
 let foot;
 
-
 function sendUserName(){
     let userName = document.querySelector(".user").value;
     let object = {
         name:userName
       }
-    let promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants" , object );
+    let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants" , object);
     promise.then(getMessages);
     promise.catch(changeUserName);
 }
-// funcao para pegar as mensagens da API//
-function getMessages(){
 
-    const gif = document.querySelector(".spinner")
-    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
+function getMessages(){
+    console.log("pegando mendagem");
     
+    let er = document.querySelector(".erro");
+    const gif = document.querySelector(".spinner");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+    
+    er.classList.remove("flex")
+    er.classList.add("none");
     gif.innerHTML+='<img src="images/spinner.gif" alt=""><div>Entrando...</div>';
     
     promise.then(getData);
-    setInterval (postStatus, 5000);
-    setInterval(getMessages ,3000);
-    setInterval(getParticipants, 10000);
+    setInterval (postStatus,5000);
+    setInterval(getMessages,3000);
+    setInterval(getParticipants,10000);
 }
 
-
-//funcao para pegar response//
 function getData(response){
     messages = response.data;
     messagesOnChat();
     }
 
-//funcao para colocar as mensagens no chat //
 function messagesOnChat(){
 
     let login = document.querySelector(".containerLogin");
@@ -54,7 +54,6 @@ function messagesOnChat(){
     chat.classList.remove("none");
     head.classList.remove("none");
     ccampo.classList.add("none");
-
 
     for(i=0; i < messages.length ; i++){
         if(messages[i].type === "status"){
@@ -94,6 +93,7 @@ function scroll(){
 
 function sendUserMessage(){
     console.log("clicou");
+
     let messageObject ={};
     let contact = document.querySelector(".selected .contact").innerHTML;
     let option = document.querySelector(".selected2 .visi").innerHTML;
@@ -101,7 +101,6 @@ function sendUserMessage(){
     let userMessage = document.querySelector(".messageInput").value;
 
     if(contact !== undefined && option === "Reservadamente"){
-
         messageObject ={
             from: userName,
             to: contact,
@@ -117,7 +116,7 @@ function sendUserMessage(){
         }
 
     }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", messageObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messageObject);
     promise.then(getMessages);
     promise.catch(reload);
 }
@@ -127,10 +126,9 @@ function postStatus(){
     uNObject = {
         name: uN
       }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/status", uNObject);
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", uNObject);
     promise.then(console.log("UserOnChat"));
     promise.catch(()=> console.log("saiu do chat"));
-
 }
 
 function changeUserName(error){
@@ -151,9 +149,8 @@ function reload(){
 window.location.reload();
 }
 
-// BONUS//
 function getParticipants(){
-    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
     promise.then(participants);
     promise.catch(()=> console.log("requisicao de participantes falhou"));
 
@@ -163,7 +160,7 @@ function participants(response){
     let users = response.data;
 
     participantsList = document.querySelector(".usersLayer");
-    for(i = 0 ; i< users.length ; i++){
+    for(i = 0 ; i < users.length ; i++){
         participantsList.innerHTML += `<div class="usersList" onclick= greenCheckMessageTo(this)>
                                             <div>
                                                 <ion-icon name="person-circle-outline"></ion-icon>
@@ -186,7 +183,7 @@ function greenCheckMessageTo(check){
 }
 
 function chooseVisibility(check2){
-    let visibility = document.querySelector(".visibility");
+    let visibility = document.querySelector(".selected2");
 
     if(visibility !== null){
         visibility.classList.remove("selected2");
@@ -194,6 +191,7 @@ function chooseVisibility(check2){
     check2.classList.add("selected2");
     addFooter();
 }
+
 function addFooter(){
     
     let fadd = document.querySelector(".add");
